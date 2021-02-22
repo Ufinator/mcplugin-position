@@ -1,0 +1,12 @@
+name: Position
+version: ${project.version}
+main: net.ufinator.position.Position
+api-version: 1.16
+authors: [ Ufinator ]
+description: A Minecraft Plugin to mark a position in a world.
+website: https://ufinator.net
+
+commands:
+  position:
+    description: Mark your position in the system!
+    usage: /<command> {set/get/remove/list} [Value 2]
