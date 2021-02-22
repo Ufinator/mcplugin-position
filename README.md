@@ -1,6 +1,6 @@
 # McPlugin-Position
 A self-made Minecraft "/position" Plugin <br>
-It is avaible here: LOL
+It is available here: https://www.spigotmc.org/resources/position.89357/
 ## About
 This is my first self-coded open-source Minecraft plugin. With this plugin, you can save your position (as coordinates)
 and if you want back to the saved position, you can call it and it will respond it with the coordinates.
