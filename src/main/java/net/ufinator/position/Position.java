@@ -48,13 +48,15 @@ public final class Position extends JavaPlugin {
             JsonObject json = new JsonParser().parse(response.toString()).getAsJsonObject();
             String version = config.getString("version");
             String newVersion = json.get("name").getAsString();
-            if (!version.equalsIgnoreCase(newVersion)) {
+            if (!newVersion.equalsIgnoreCase(version)) {
                 log("§8++++++++++++++++++++");
                 log("§cYou are not using the latest Plugin! §a§lDownload the latest Plugin here: §6§lhttps://www.spigotmc.org/resources/position.89357/");
                 log("§8++++++++++++++++++++");
+            } else {
+                log("§aPerfect! You are using the latest version!");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log("§cCan't get Update Informations...");
         }
     }
 

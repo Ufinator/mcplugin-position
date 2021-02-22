@@ -21,6 +21,10 @@ public class PositionCMD implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(Position.PREFIX + "§cYou can't run §6/position §cCommands as Console!");
+            return true;
+        }
         Player player = (Player) sender;
         FileConfiguration config = YamlConfiguration.loadConfiguration(positionFile);
         try {
