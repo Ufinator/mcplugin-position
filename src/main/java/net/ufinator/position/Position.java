@@ -11,10 +11,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Objects;
 
 public final class Position extends JavaPlugin {
 
-    public static String PREFIX = "§6§lPosition §8§l>> §r";
+    public final static String PREFIX = "§6§lPosition §8§l>> §r";
     public static Position INSTANCE;
     private final File positionFile = new File(getDataFolder(), "position.yml");
     private final File configFile = new File(getDataFolder(), "config.yml");
@@ -32,8 +33,25 @@ public final class Position extends JavaPlugin {
         if (!configFile.exists()) {
             saveResource("config.yml", true);
         }
-        FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
         register();
+        versionChecker();
+    }
+
+    @Override
+    public void onDisable() {
+        // Plugin shutdown logic
+        log("§cPlugin disabled!");
+    }
+
+    public void register() {
+        Objects.requireNonNull(Bukkit.getPluginCommand("position")).setExecutor(new PositionCMD());
+    }
+
+    public void log(String txt) {
+        Bukkit.getConsoleSender().sendMessage(PREFIX + txt);
+    }
+
+    public void versionChecker() {
         try {
             URL url = new URL("https://api.spiget.org/v2/resources/89357/versions/latest");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -46,6 +64,7 @@ public final class Position extends JavaPlugin {
             }
             connection.disconnect();
             JsonObject json = new JsonParser().parse(response.toString()).getAsJsonObject();
+            FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
             String version = config.getString("version");
             String newVersion = json.get("name").getAsString();
             if (!newVersion.equalsIgnoreCase(version)) {
@@ -56,22 +75,8 @@ public final class Position extends JavaPlugin {
                 log("§aPerfect! You are using the latest version!");
             }
         } catch (IOException e) {
-            log("§cCan't get Update Informations...");
+            log("§cCan't fetch version information's...");
         }
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-        log("§cPlugin disabled!");
-    }
-
-    public void register() {
-        Bukkit.getPluginCommand("position").setExecutor(new PositionCMD());
-    }
-
-    public void log(String txt) {
-        Bukkit.getConsoleSender().sendMessage(PREFIX + txt);
     }
 
 }

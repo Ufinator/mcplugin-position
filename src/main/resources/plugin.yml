@@ -10,3 +10,25 @@ commands:
   position:
     description: Mark your position in the system!
     usage: /<command> {set/get/remove/list} [Value 2]
+
+permissions:
+  position.*:
+    description: Give permission to every command from the plugin Position
+    children:
+      position.get: true
+      position.set: true
+      position.list: true
+      position.remove: true
+    default: op
+  position.get:
+    description: Give a player permission to get a saved position
+    default: true
+  position.set:
+    description: Give a player permission to save a position
+    default: op
+  position.list:
+    description: Give a player permission to list all saved positions
+    default: true
+  position.remove:
+    description: Give a player permission to remove a saved position
+    default: op

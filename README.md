@@ -8,14 +8,18 @@ and if you want back to the saved position, you can call it and it will respond 
 ## How does it work?
 It's pretty simple: <br> <br>
 Command to save your position: ```/position set {custom name}``` _It will announce everyone on the Server if a new
-position will be created_<br> 
-Permission: `None` <br> <br>
+position will be created_<br>
+Permission: `position.set` <br>
+Default permission: `OP` <br> <br>
 Command to get a saved position: ```/position get {position name}```<br>
-Permission: `None`<br> <br>
+Permission: `position.get`<br> 
+Default permission: `Everyone` <br> <br>
 Command to remove a saved position: ```/position remove {position name}``` <br>
-Permission: `None` <br> <br>
+Permission: `position.remove` <br> 
+Default permission: `OP`<br> <br>
 Command to list all available positions: ```/position list``` <br>
-Permission: `None`
+Permission: `position.list` <br>
+Default permission: `Everyone`
 
 ## Supported Versions
 This Plugin is made for the Version `1.16.5`. <br>
