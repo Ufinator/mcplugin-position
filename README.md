@@ -29,5 +29,5 @@ But it works also with these Versions: `1.8.X - 1.16.X`
 This Plugin is licensed under the GNU General Public License v3.0
 
 ## Todo
-- [ ] Add Permissions <br>
+- [x] Add Permissions <br>
 - [ ] Add a GUI
